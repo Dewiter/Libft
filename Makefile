@@ -6,11 +6,12 @@
 #    By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/11 20:25:27 by rolevy            #+#    #+#              #
-#    Updated: 2017/04/22 08:18:53 by rolevy           ###   ########.fr        #
+#    Updated: 2017/04/24 17:20:49 by rolevy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC 	= 	ft_atoi.c		\
+SRC 	= 	ft_abs.c		\
+			ft_atoi.c		\
 			ft_bzero.c		\
 			ft_isalnum.c 	\
 			ft_isalpha.c 	\
@@ -33,6 +34,7 @@ SRC 	= 	ft_atoi.c		\
 			ft_memdel.c		\
 			ft_memmove.c	\
 			ft_memset.c 	\
+			ft_power.c		\
 			ft_putchar.c 	\
 			ft_putchar_fd.c \
 			ft_putendl.c 	\
@@ -41,6 +43,7 @@ SRC 	= 	ft_atoi.c		\
 			ft_putnbr_fd.c	\
 			ft_putstr.c 	\
 			ft_putstr_fd.c 	\
+			ft_sqrt.c		\
 			ft_strcat.c 	\
 			ft_strncat.c 	\
 			ft_strchr.c 	\
@@ -60,6 +63,7 @@ SRC 	= 	ft_atoi.c		\
 			ft_strncat.c 	\
 			ft_strncmp.c 	\
 			ft_strncpy.c 	\
+			ft_strndup.c	\
 			ft_strnequ.c	\
 			ft_strnew.c 	\
 			ft_strstr.c 	\
