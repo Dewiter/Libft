@@ -6,9 +6,11 @@
 #    By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/11 20:25:27 by rolevy            #+#    #+#              #
-#    Updated: 2017/04/24 17:20:49 by rolevy           ###   ########.fr        #
+#    Updated: 2017/04/24 17:50:46 by rolevy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+CC		= gcc
 
 SRC 	= 	ft_abs.c		\
 			ft_atoi.c		\
@@ -82,15 +84,17 @@ FLAG	= -Wall -Wextra -Werror
 
 all : $(NAME)
 
-$(NAME):
-	@gcc -c $(FLAG) $(SRC) 
+$(NAME): $(OFILE)
 	@ar rc $(NAME) $(OFILE)
 	@ranlib $(NAME)
 
+%.o: %.c
+	@$(CC) -c $(FLAG) $^ $(SRC) 
+
 clean:
-	rm -f $(OFILE)
+	@rm -f $(OFILE)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all

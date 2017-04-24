@@ -6,7 +6,7 @@
 /*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 12:11:05 by rolevy            #+#    #+#             */
-/*   Updated: 2017/04/24 17:30:07 by rolevy           ###   ########.fr       */
+/*   Updated: 2017/04/24 17:34:06 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int					ft_strequ(char const *s1, const char *s2);
 int					ft_strnequ(char const *s1, const char *s2, size_t n);
 int					ft_memcmp(const void *str1, const void *str2, size_t n);
 size_t				ft_strlen(const char *str);
-
 
 /*
 ** Display
