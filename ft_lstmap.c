@@ -6,7 +6,7 @@
 /*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 16:32:08 by rolevy            #+#    #+#             */
-/*   Updated: 2017/04/22 04:10:52 by rolevy           ###   ########.fr       */
+/*   Updated: 2017/04/24 15:38:17 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,15 @@
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list	*tab;
-	t_list	*current;
 
-	tab = NULL;
-	current = lst;
-	while (current)
+	tab = (t_list *)malloc(sizeof(t_list));
+	if (!tab)
+		return (NULL);
+	if (lst)
 	{
-		if (!(current))
-		{
-			current = NULL;
-			free(current);
-		}
-		tab = f(current);
-		tab = tab->next;
-		current->next = lst;
+		tab = f(lst);
+		tab->next = ft_lstmap(lst->next, f);
+		return (tab);
 	}
-	return (tab);
+	return (NULL);
 }

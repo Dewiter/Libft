@@ -6,7 +6,7 @@
 /*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 12:10:21 by rolevy            #+#    #+#             */
-/*   Updated: 2017/04/22 01:47:10 by rolevy           ###   ########.fr       */
+/*   Updated: 2017/04/24 16:25:53 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void				*ft_memccpy(void *str1, const void *str2, int c, size_t n)
 	i = 0;
 	dest = (unsigned char *)str1;
 	src = (unsigned char *)str2;
-	while (src[i] && i < n)
+	while (i < n)
 	{
 		dest[i] = src[i];
 		if (src[i] == (unsigned char)c)

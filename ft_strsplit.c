@@ -5,66 +5,125 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/15 20:53:08 by rolevy            #+#    #+#             */
-/*   Updated: 2017/04/22 08:17:47 by rolevy           ###   ########.fr       */
+/*   Created: 2017/04/24 16:09:57 by rolevy            #+#    #+#             */
+/*   Updated: 2017/04/24 16:19:21 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
 #include "libft.h"
+#include <string.h>
+#include <stdlib.h>
 
-static size_t	counter_word(char const *str, char c)
+static void	*dealloc_tab(char **tab, size_t index)
 {
-	size_t	cpt;
-	int		isword;
-
-	cpt = 0;
-	isword = 0;
-	while (*str)
+	while (index + 1 > 0)
 	{
-		if (*str != c && !isword)
-		{
-			cpt++;
-			isword = 1;
-		}
-		else if (*str == c && isword)
-			isword = 0;
-		str++;
+		free(tab[index - 1]);
+		index--;
 	}
-	return (cpt);
+	free(tab);
+	return (NULL);
 }
 
-static void		split(char **dest, char *str, int counter, char c)
+static int	get_words(char *str, char c)
 {
 	int		i;
-	char	*tmp;
+	int		word;
+	int		in_word;
 
 	i = 0;
-	while (i < counter)
+	word = 0;
+	in_word = 0;
+	while (str[i])
 	{
-		while (*str == c)
-			str++;
-		tmp = str;
-		while (*str != c)
-			str++;
-		dest[i] = (char *)malloc(sizeof(char) * (str - tmp));
-		if (dest[i])
-			ft_strncpy(dest[i], tmp, str - tmp);
+		if (str[i] != c)
+		{
+			if (!in_word)
+			{
+				in_word = 1;
+				word++;
+			}
+		}
+		else
+			in_word = 0;
 		i++;
 	}
-	dest[i] = NULL;
+	return (word);
 }
 
-char			**ft_strsplit(char const *s, char c)
+static char	*cut_word(char *str, char c)
 {
-	char**dest;
-	int counter;
+	int		i;
+	int		j;
+	char	*str_return;
 
-	counter = counter_word(s, c);
-	dest = (char **)malloc(sizeof(char *) * (counter + 1));
-	if (!dest)
+	i = 0;
+	while (str[i] && str[i] != c)
+		i++;
+	j = i;
+	i = 0;
+	if ((str_return = (char*)malloc(sizeof(char) * j + 1)) == NULL)
 		return (NULL);
-	split(dest, (char *)s, counter, c);
-	return (dest);
+	while (i < j)
+	{
+		str_return[i] = str[i];
+		i++;
+	}
+	str_return[i] = '\0';
+	return (str_return);
+}
+
+static char	*get_word(char *str, int w, char c)
+{
+	int		i;
+	int		word;
+	int		in_word;
+
+	i = 0;
+	word = 0;
+	in_word = 0;
+	while (str[i])
+	{
+		if (str[i] != c)
+		{
+			if (!in_word)
+			{
+				in_word = 1;
+				word++;
+				if (word == w)
+					return (cut_word(&str[i], c));
+			}
+		}
+		else
+			in_word = 0;
+		i++;
+	}
+	return (&str[i]);
+}
+
+char		**ft_strsplit(char const *str, char c)
+{
+	int		i;
+	int		k;
+	char	*str_return_of_the_jedi;
+	char	**tab;
+
+	i = 0;
+	if ((tab = (char**)malloc(sizeof(tab) * (get_words((char *)str, c) + 1)))
+			== NULL)
+		return (NULL);
+	while (i < get_words((char *)str, c))
+	{
+		k = 0;
+		str_return_of_the_jedi = get_word((char *)str, i + 1, c);
+		while (str_return_of_the_jedi[k])
+			k++;
+		if ((tab[i] = (char*)malloc(sizeof(tab[i]) * k + 1)) == NULL)
+			return (dealloc_tab(tab, i));
+		tab[i] = &*str_return_of_the_jedi;
+		tab[i][k] = '\0';
+		i++;
+	}
+	tab[i] = NULL;
+	return (tab);
 }
