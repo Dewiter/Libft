@@ -6,7 +6,7 @@
 /*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 03:23:05 by rolevy            #+#    #+#             */
-/*   Updated: 2017/04/22 03:24:22 by rolevy           ###   ########.fr       */
+/*   Updated: 2017/04/27 16:06:31 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char		*ft_strsub(char const *s, unsigned int start, size_t len)
 	char	*tab;
 	size_t	i;
 
+	if (!s)
+		return (NULL);
 	tab = (char *)malloc(sizeof(char) * (len + 1));
 	if (!(tab))
 		return (NULL);

@@ -6,12 +6,13 @@
 /*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 19:37:50 by rolevy            #+#    #+#             */
-/*   Updated: 2017/04/22 03:15:06 by rolevy           ###   ########.fr       */
+/*   Updated: 2017/04/27 15:25:51 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
+#include <string.h>
 
 char		*ft_strmap(char const *s, char (*f)(char))
 {
@@ -19,6 +20,8 @@ char		*ft_strmap(char const *s, char (*f)(char))
 	char	*tab;
 	size_t	size;
 
+	if (!s || !f)
+		return (NULL);
 	i = 0;
 	size = ft_strlen(s);
 	tab = ft_strnew(size);

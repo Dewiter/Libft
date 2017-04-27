@@ -6,7 +6,7 @@
 /*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/16 02:29:30 by rolevy            #+#    #+#             */
-/*   Updated: 2017/04/22 04:02:12 by rolevy           ###   ########.fr       */
+/*   Updated: 2017/04/27 15:37:26 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strtrim(char const *s)
 	size_t	start;
 	size_t	len;
 
+	if (!s)
+		return (NULL);
 	start = 0;
 	while ((s[start] == ' ' || s[start] == '\n' || s[start] == '\t'))
 		start++;

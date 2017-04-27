@@ -6,7 +6,7 @@
 /*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 16:09:57 by rolevy            #+#    #+#             */
-/*   Updated: 2017/04/24 16:19:21 by rolevy           ###   ########.fr       */
+/*   Updated: 2017/04/27 15:31:35 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ char		**ft_strsplit(char const *str, char c)
 	char	*str_return_of_the_jedi;
 	char	**tab;
 
+	if (!str)
+		return (NULL);
 	i = 0;
 	if ((tab = (char**)malloc(sizeof(tab) * (get_words((char *)str, c) + 1)))
 			== NULL)

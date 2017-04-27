@@ -6,13 +6,16 @@
 /*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:42:17 by rolevy            #+#    #+#             */
-/*   Updated: 2017/04/12 20:48:26 by rolevy           ###   ########.fr       */
+/*   Updated: 2017/04/27 15:32:49 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
 int		ft_strequ(char const *s1, char const *s2)
 {
+	if (!s1 || !s2)
+		return (0);
 	return (!(ft_strcmp(s1, s2)));
 }

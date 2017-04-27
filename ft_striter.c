@@ -6,7 +6,7 @@
 /*   By: rolevy <rolevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 19:16:34 by rolevy            #+#    #+#             */
-/*   Updated: 2017/04/12 19:45:36 by rolevy           ###   ########.fr       */
+/*   Updated: 2017/04/27 15:26:27 by rolevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_striter(char *s, void (*f)(char *))
 {
 	int i;
 
+	if (!s || !f)
+		return ;
 	i = 0;
 	while (s[i])
 	{
